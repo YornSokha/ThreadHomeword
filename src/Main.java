@@ -8,7 +8,7 @@ public class Main {
         thread1.start();
         thread1.join();
 
-        Thread thread2 = new Thread(new PrintThread("Shut The Fuck Up bro!"));
+        Thread thread2 = new Thread(new PrintThread("I love Java programming!"));
         thread2.start();
         thread2.join();
 
