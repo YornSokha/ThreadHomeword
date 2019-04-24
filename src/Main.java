@@ -1,25 +1,24 @@
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        Thread thread = new Thread(new PrintThread("Hello KSHRD!"));
+    public static void main(String[] args) {
+        String[] messages = {"Hello KSHRD!", "*********************************",
+                             "I love Java programming!", "---------------------------------",
+                             "........Complete 100%"};
+        Thread thread;
+        for (int i = 0; i < messages.length; i++) {
+            if (i == 4) {
+                System.out.print("Downloading");
+            }
+            thread = new Thread(new PrintThread(messages[i]));
+            start(thread);
+        }
+    }
+
+    private static void start(Thread thread) {
         thread.start();
-        thread.join();
-
-        Thread thread1 = new Thread(new PrintThread("*********************************"));
-        thread1.start();
-        thread1.join();
-
-        Thread thread2 = new Thread(new PrintThread("I love Java programming!"));
-        thread2.start();
-        thread2.join();
-
-        Thread thread3 = new Thread(new PrintThread("---------------------------------"));
-        thread3.start();
-        thread3.join();
-
-        System.out.print("Downloading");
-
-        Thread thread4 = new Thread(new PrintThread("........Complete 100%"));
-        thread4.start();
-        thread4.join();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
